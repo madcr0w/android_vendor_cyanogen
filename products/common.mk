@@ -10,7 +10,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.rommanager.developerid=cyanogenmodnightly
 else
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.rommanager.developerid=cyanogenmod
+    ro.rommanager.developerid=madcrow
 endif
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
@@ -45,10 +45,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     openvpn
 
-# Copy over the changelog to the device
-PRODUCT_COPY_FILES += \
-    vendor/cyanogen/CHANGELOG.mkdn:system/etc/CHANGELOG-CM.txt
-
 # Common CM overlay
 PRODUCT_PACKAGE_OVERLAYS += vendor/cyanogen/overlay/common
 
@@ -64,28 +60,12 @@ PRODUCT_COPY_FILES += \
     vendor/cyanogen/prebuilt/common/etc/terminfo/l/linux:system/etc/terminfo/l/linux \
     vendor/cyanogen/prebuilt/common/etc/terminfo/u/unknown:system/etc/terminfo/u/unknown \
     vendor/cyanogen/prebuilt/common/etc/profile:system/etc/profile \
-    vendor/cyanogen/prebuilt/common/etc/init.local.rc:system/etc/init.local.rc \
-    vendor/cyanogen/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/cyanogen/prebuilt/common/etc/init.d/01sysctl:system/etc/init.d/01sysctl \
-    vendor/cyanogen/prebuilt/common/etc/init.d/03firstboot:system/etc/init.d/03firstboot \
-    vendor/cyanogen/prebuilt/common/etc/init.d/04modules:system/etc/init.d/04modules \
-    vendor/cyanogen/prebuilt/common/etc/init.d/05mountsd:system/etc/init.d/05mountsd \
     vendor/cyanogen/prebuilt/common/etc/init.d/06mountdl:system/etc/init.d/06mountdl \
-    vendor/cyanogen/prebuilt/common/etc/init.d/20userinit:system/etc/init.d/20userinit \
-    vendor/cyanogen/prebuilt/common/bin/handle_compcache:system/bin/handle_compcache \
-    vendor/cyanogen/prebuilt/common/bin/compcache:system/bin/compcache \
     vendor/cyanogen/prebuilt/common/bin/fix_permissions:system/bin/fix_permissions \
-    vendor/cyanogen/prebuilt/common/bin/sysinit:system/bin/sysinit \
-    vendor/cyanogen/prebuilt/common/xbin/htop:system/xbin/htop \
-    vendor/cyanogen/prebuilt/common/xbin/irssi:system/xbin/irssi \
-    vendor/cyanogen/prebuilt/common/xbin/powertop:system/xbin/powertop \
-    vendor/cyanogen/prebuilt/common/xbin/openvpn-up.sh:system/xbin/openvpn-up.sh
+    vendor/cyanogen/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 PRODUCT_COPY_FILES += \
-#    vendor/cyanogen/prebuilt/common/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd
-
-PRODUCT_COPY_FILES +=  \
-    vendor/cyanogen/proprietary/RomManager.apk:system/app/RomManager.apk \
+    vendor/cyanogen/prebuilt/common/etc/init.d/10apps2sd:system/etc/init.d/10apps2sd
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -93,6 +73,29 @@ PRODUCT_COPY_FILES += \
 
 # Always run in insecure mode, enables root on user build variants
 #ADDITIONAL_DEFAULT_PROPERTIES += ro.secure=0
+
+PRODUCT_COPY_FILES += \
+    vendor/cyanogen/google/system/app/FOTAKill.apk:system/app/FOTAKill.apk \
+    vendor/cyanogen/google/system/app/GenieWidget.apk:system/app/GenieWidget.apk \
+    vendor/cyanogen/google/system/app/Gmail.apk:system/app/Gmail.apk \
+    vendor/cyanogen/google/system/app/GoogleBackupTransport.apk:system/app/GoogleBackupTransport.apk \
+    vendor/cyanogen/google/system/app/GoogleCalendarSyncAdapter.apk:system/app/GoogleCalendarSyncAdapter.apk \
+    vendor/cyanogen/google/system/app/GoogleContactsSyncAdapter.apk:system/app/GoogleContactsSyncAdapter.apk \
+    vendor/cyanogen/google/system/app/GoogleFeedback.apk:system/app/GoogleFeedback.apk \
+    vendor/cyanogen/google/system/app/GooglePartnerSetup.apk:system/app/GooglePartnerSetup.apk \
+    vendor/cyanogen/google/system/app/GoogleQuickSearchBox.apk:system/app/GoogleQuickSearchBox.apk \
+    vendor/cyanogen/google/system/app/GoogleServicesFramework.apk:system/app/GoogleServicesFramework.apk \
+    vendor/cyanogen/google/system/app/LatinImeTutorial.apk:system/app/LatinImeTutorial.apk \
+    vendor/cyanogen/google/system/app/MarketUpdater.apk:system/app/MarketUpdater.apk \
+    vendor/cyanogen/google/system/app/MediaUploader.apk:system/app/MediaUploader.apk \
+    vendor/cyanogen/google/system/app/NetworkLocation.apk:system/app/NetworkLocation.apk \
+    vendor/cyanogen/google/system/app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
+    vendor/cyanogen/google/system/app/SetupWizard.apk:system/app/SetupWizard.apk \
+    vendor/cyanogen/google/system/app/Talk.apk:system/app/Talk.apk \
+    vendor/cyanogen/google/system/app/Vending.apk:system/app/Vending.apk \
+    vendor/cyanogen/google/system/etc/permissions/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
+    vendor/cyanogen/google/system/etc/permissions/features.xml:system/etc/permissions/features.xml \
+    vendor/cyanogen/google/system/framework/com.google.android.maps.jar:system/framework/com.google.android.maps.jar
 
 ifdef CYANOGEN_WITH_GOOGLE
     PRODUCT_COPY_FILES += \
